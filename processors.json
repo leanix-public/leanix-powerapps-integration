@@ -1,0 +1,58 @@
+{
+    "deletionScope": {},
+    "processors": [
+        {
+            "processorType": "inboundFactSheet",
+            "processorName": "Microservice creation",
+            "processorDescription": "Creates microservice",
+            "type": "Microservice",
+            "filter": {
+                "exactType": "Application"
+            },
+            "identifier": {
+                "external": {
+                    "id": {
+                        "expr": "${content.id}"
+                    },
+                    "type": {
+                        "expr": "powerappsId"
+                    }
+                }
+            },
+            "run": 0,
+            "updates": [
+                {
+                    "key": {
+                        "expr": "name"
+                    },
+                    "values": [
+                        {
+                            "expr": "${lx.factsheet.name}"
+                        },
+                        {
+                            "expr": "${data.name}"
+                        },
+                        {
+                            "expr": "${content.id}"
+                        }
+                    ]
+                },
+                {
+                    "key": {
+                        "expr": "description"
+                    },
+                    "values": [
+                        {
+                            "expr": "${lx.factsheet.description}"
+                        },
+                        {
+                            "expr": "${data.description}"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "variables": {},
+    "logLdifUrl": true
+}
